@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.mem">
+	<select id="memselect" parameterType="string" resultType="member">
+		select *from members where id = #{id }
+	</select>
+	
+	<select id="login" resultType="boolean">
+		select *from members where id = #{id } and pw = #{pw }
+	</select>
+	
+	<select id="memlist" resultType="member">
+		select *from members order by id
+	</select>
+	
+	<insert id="meminsert" parameterType="member">
+		insert into members values(#{id }, #{pw }, #{name }, #{email }, #{addr })
+	</insert>
+	
+	<update id="memupdate" parameterType="member">
+		update members set id=#{id }, pw=#{pw }, name=#{name }, email=#{email }, addr=#{addr } where id = #{id }
+	</update>
+	
+	<delete id="memdelete" parameterType="string">
+		delete from members where id=#{id } 
+	</delete>
+</mapper>

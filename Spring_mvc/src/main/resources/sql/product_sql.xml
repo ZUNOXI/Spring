@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sql.prod">
+	<select id="prodselect" parameterType="string" resultType="product">
+		select *from product where num = #{num }
+	</select>
+	
+	<select id="prodlist" resultType="product">
+		select *from product order by num
+	</select>
+	
+	<insert id="prodinsert" parameterType="product">
+		insert into product values(#{num }, #{name }, #{price }, #{com })
+	</insert>
+	
+	<update id="produpdate" parameterType="product">
+		update product set name = #{name }, price = #{price }, com = #{com } where num = #{num }
+	</update>
+	
+	<delete id="proddelete" parameterType="string">
+		delete from product where num=#{num } 
+	</delete>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pro">
+	 
+	<resultMap type="product" id="product">
+		<result column="num" property="num"/>
+		<result column="name" property="name"/>
+		<result column="price" property="price"/>
+	</resultMap>
+	 
+	<select id="selectjoin" resultMap="boardmem1">
+		select * 
+		from member join board on (board.writer = member.name);
+	</select>
+	
+	<select id="selectList" resultType="member">
+		select * from products order by num
+		
+	</select>
+	<select id="selectOne" parameterType="string"
+		resultType="member">
+		select * from products
+		where 1 = 1
+		and num = #{num }
+		
+	</select>
+	<select id="selectIf" parameterType="string"
+		resultType="member">
+		select * from member
+		where 1 = 1
+		<if test="name != null">
+			and name = #{name } 
+		</if>
+
+	</select>
+
+	<select id="selectchoose" parameterType="string"
+		resultType="member">
+
+		select * from member
+		<where>
+			<choose>
+				<when test="name != null">
+					and name = #{name }
+				</when>
+				<when test="name = aaa">
+					and id = 1
+				</when>
+				<otherwise>
+					and id = 2
+				</otherwise>
+			</choose>
+		</where>
+	</select>
+
+	<insert id="insert" parameterType="member">
+		insert into products(num, name,
+		price)
+		values(
+		#{num },
+		#{name },
+		#{price }
+		)
+	</insert>
+
+	<update id="update" parameterType="member">
+		update products set
+		name = #{name},
+		price = #{price}
+		where num = #{num }
+	</update>
+
+	<delete id="delete" parameterType="string">
+		delete from products where num =
+		#{num }
+	</delete>
+</mapper>
+
+
+
+
+
+

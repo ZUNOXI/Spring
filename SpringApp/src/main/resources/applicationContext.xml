@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<!--Member mem = new Member  
+		class : 객체생성할 클래스
+		id : 변수명
+		scope : 객체생성 범위
+			singleton : 기본 객체를 하나만 생성하여 재사용
+			prototype : 요구할때마다 객체를 생성하는 것	
+	-->
+	<bean class="app.Member" id="mem" scope="singleton" lazy-init="true" init-method="init" destroy-method="destroy">
+		<constructor-arg index="0" value="고길동"></constructor-arg>
+		<constructor-arg index="1" value="41"></constructor-arg>
+		<constructor-arg index="2" value="쌍문동"></constructor-arg>
+		<constructor-arg index="3" ref="bigmouse"></constructor-arg>
+	</bean>
+	
+	<bean id="bigmouse" class="app.BigMouse">
+		<constructor-arg name="name" value="그나브리"></constructor-arg>
+	</bean>
+	
+</beans>
