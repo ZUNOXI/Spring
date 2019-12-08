@@ -12,7 +12,7 @@
 
 
 
-1. 클래스(Class), 객체(Object), 인스턴스(Instance)의 차이는?
+# 1. 클래스(Class), 객체(Object), 인스턴스(Instance)의 차이는?
 
 
 
@@ -48,7 +48,7 @@
 
 
 
-2. public, protected, private의 차이는 뭘까??
+# 2. public, protected, private의 차이는 뭘까??
 
 
 
@@ -120,7 +120,7 @@ public은 축구공, 책 등 의 상속받은 아들이 타인에게도 얼마�
 
 
 
-3. 객체 지향 프로그래밍의 특성
+# 3. 객체 지향 프로그래밍의 특성
 
 
 
